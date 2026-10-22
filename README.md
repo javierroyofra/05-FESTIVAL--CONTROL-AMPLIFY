@@ -1,6 +1,6 @@
-# FESTIVAL CONTROL · React Native + Expo Web
+# FESTIVAL CONTROL · React Native + Expo Web + Amplify
 
-Demo **frontend-only** para la charla de AWS Amplify. Mantiene la identidad visual del cuaderno 04-PILARES-SERVERLESS: fondo `#090909`, cards `#151515`, acento `#FF2F92`, confirmado `#39D98A` y retrasado `#F5C542`.
+Aplicación para gestionar eventos de un festival. Mantiene la identidad visual del cuaderno 04-PILARES-SERVERLESS: fondo `#090909`, cards `#151515`, acento `#FF2F92`, confirmado `#39D98A` y retrasado `#F5C542`.
 
 ## Inicio rápido
 
@@ -16,7 +16,17 @@ npm run web
 npm run build:web
 ```
 
-El resultado estático se genera en `dist/`. En Amplify: conectar GitHub, rama `main`, usar `amplify.yml` y publicar `dist/`. No requiere AWS Academy, Lambda ni API Gateway.
+El resultado estático se genera en `dist/`. En Amplify: conectar GitHub, rama `main` y usar `amplify.yml`. La fase backend del build despliega los recursos de Gen 2; el rol de servicio de Amplify debe tener permisos para aprovisionarlos.
+
+## Backend de Amplify
+
+El backend está definido con Amplify Gen 2 en `amplify/`: `data/resource.ts` declara el modelo `FestivalEvent` y `backend.ts` lo registra. El modelo permite crear, consultar, actualizar y eliminar eventos.
+
+```bash
+npm run sandbox
+```
+
+Este comando inicia el sandbox de desarrollo de Amplify y requiere credenciales de AWS configuradas. El acceso a los datos usa una API key pública para facilitar la demo; no debe usarse para datos sensibles ni en producción. La interfaz actual todavía usa datos locales y no está conectada a este backend.
 
 ## Prueba de alumno
 
